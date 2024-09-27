@@ -1,50 +1,52 @@
 # Login
-General Login to use like a microservice for all the environment
+General Login to use like a microservice for all environments
 
 ---
 
-# Proyecto de Aplicación de Login
+# Login Application Project
 
-## 1. Descripción del Proyecto
+## 1. Project Description
 
-Este proyecto es una aplicación de login que permite la creación de usuarios, recuperación de contraseñas y autenticación a través de servicios de terceros como Google, Facebook y Outlook. La aplicación está dividida en dos partes: un backend desarrollado en Flask y un frontend en React utilizando Material-UI.
+This project is a login application that allows user creation, password recovery, and authentication through third-party services such as Google, Facebook, and Outlook. The application is divided into two parts: a backend developed in Flask and a frontend in React using Material-UI.
 
-## 2. Estructura del Proyecto
-/mi-proyecto
-│
-├── /backend
-│   ├── /app
-│   │   ├── /models          # Modelos de datos
-│   │   ├── /services        # Lógica de negocio
-│   │   ├── /controllers     # Controladores para manejar las solicitudes
-│   │   ├── /repositories     # Acceso a datos
-│   │   ├── /routes          # Rutas de la API
-│   │   ├── /utils           # Funciones utilitarias
-│   │   └── /tests           # Pruebas unitarias
-│   │
-│   ├── /migrations          # Migraciones de la base de datos
-│   ├── /requirements.txt    # Dependencias de Python
-│   └── app.py               # Archivo principal de la aplicación
-│
-└── /frontend
-    ├── /src
-    │   ├── /components      # Componentes de React
-    │   ├── /pages           # Páginas de la aplicación
-    │   ├── /services        # Servicios para hacer llamadas a la API
-    │   ├── /utils           # Funciones utilitarias
-    │   └── index.js         # Archivo principal de React
-    │
-    ├── package.json          # Dependencias de React
-    └── .env                  # Variables de entorno
-## 3. Funcionalidades
+## 2. Project Structure
+/Login
+│  
+├── /backend 
+│   ├── /app 
+│   │   ├── /models            # Data models 
+│   │   ├── /services          # Business logic 
+│   │   ├── /controllers       # Controllers to handle requests 
+│   │   ├── /repositories      # Data access 
+│   │   ├── /routes            # API routes 
+│   │   ├── /utils             # Utility functions 
+│   │   └── /tests             # Unit tests 
+│   │ 
+│   ├── /migrations            # Database migrations 
+│   ├── /requirements.txt      # Python dependencies 
+│   └── app.py                 # Main application file 
+│   
+└── /frontend 
+    ├── /src 
+    │   ├── /components        # React components 
+    │   ├── /pages             # Application pages 
+    │   ├── /services          # API service calls 
+    │   ├── /utils             # Utility functions 
+    │   └── index.js           # Main React file 
+    │   
+    ├── package.json           # React dependencies 
+    └── .env                   # Environment variables
 
-- **Registro de nuevos usuarios**: Permite a los usuarios registrarse mediante un formulario o autenticarse a través de servicios de terceros (Google, Facebook, Outlook).
-- **Inicio de sesión**: Los usuarios pueden iniciar sesión si ya están registrados.
-- **Recuperación de contraseña**: Los usuarios pueden recuperar su contraseña mediante un código enviado por correo electrónico.
-- **Autenticación JWT**: Se genera un token JWT para las sesiones de usuario.
-- **Seguridad**: Implementación de medidas de seguridad para prevenir ataques comunes como inyecciones SQL y ataques de fuerza bruta.
 
-## 4. Tecnologías Utilizadas
+## 3. Features
+
+- **New User Registration**: Allows users to register via a form or authenticate using third-party services (Google, Facebook, Outlook).
+- **Login**: Registered users can log in.
+- **Password Recovery**: Users can recover their passwords via a code sent to their email.
+- **JWT Authentication**: A JWT token is generated for user sessions.
+- **Security**: Implements security measures to prevent common attacks such as SQL injections and brute force attacks.
+
+## 4. Technologies Used
 
 - **Backend**:
   - Flask
@@ -65,77 +67,55 @@ Este proyecto es una aplicación de login que permite la creación de usuarios, 
   - Jest
   - React Testing Library
 
-## 5. Instalación
+## 5. Installation
 
 ### Backend
 
-1. Clona el repositorio:
-git clone https://github.com/tu-usuario/mi-proyecto.git
-   cd mi-proyecto/backend
-2. Crea un entorno virtual y actívalo:
-python -m venv venv
-   venv\Scripts\activate  # En Windows
-   # source venv/bin/activate  # En macOS/Linux
-3. Instala las dependencias:
-pip install -r requirements.txt
-4. Configura la base de datos MySQL y actualiza  `app.py`  con tus credenciales.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/my-project.git
+   cd my-project/backend
 
-5. Ejecuta la aplicación:
-python app.py
+2. Create and activate a virtual environment:
+   ```bash
+      python -m venv venv
+      venv\Scripts\activate  # On Windows
+      # source venv/bin/activate  # On macOS/Linux
+
+3. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+4. Set up the MySQL database and update app.py with your credentials.
+
+5. Run the application:
+   ```bash
+   python app.py
+
 ### Frontend
 
-1. Navega a la carpeta del frontend:
-cd ../frontend
-2. Instala las dependencias:
-npm install
-3. Ejecuta la aplicación:
-npm start
-## 6. Pruebas
+1. Navigate to the frontend folder:
+   ```bash
+   cd ../frontend
 
-Para ejecutar las pruebas en el backend, asegúrate de que el entorno virtual esté activado y ejecuta:
+2. Install the dependencies:  
+   ```bash
+   npm install
+
+3. Run the application:
+   ```bash
+   npm start
+
+## 6. Testing
+
+### To run backend tests, make sure the virtual environment is activated and run:
 pytest
-Para ejecutar las pruebas en el frontend, navega a la carpeta del frontend y ejecuta:
+
+### To run frontend tests, navigate to the frontend folder and run:
 npm test
-## 7. Contribuciones
 
-Las contribuciones son bienvenidas. Si deseas contribuir, por favor abre un issue o envía un pull request.
+## 7. Contributions
+Contributions are welcome. If you wish to contribute, please open an issue or submit a pull request.
 
-## 8. Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
-
----
-
-## 9. Comandos para Crear la Estructura del Proyecto en Windows
-
-### Crear la Estructura del Proyecto
-
-1. **Crea el directorio principal del proyecto**:
-mkdir mi-proyecto
-   cd mi-proyecto
-2. **Crea la carpeta para el backend**:
-mkdir backend
-   cd backend
-3. **Crea la estructura del backend**:
-mkdir app
-   cd app
-   mkdir models services controllers repositories routes utils tests
-   cd ..
-   mkdir migrations
-   echo. > requirements.txt
-   echo. > app.py
-   cd ..
-4. **Crea la carpeta para el frontend**:
-mkdir frontend
-   cd frontend
-5. **Crea la estructura del frontend**:
-mkdir src
-   cd src
-   mkdir components pages services utils
-   echo. > index.js
-   cd ..
-   echo. > package.json
-   echo. > .env
-   cd ..
----
-
+## 8. License
+This project is licensed under the MIT License. See the LICENSE file for more details.

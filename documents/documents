@@ -1,107 +1,12 @@
 # Documentación del Proyecto de Aplicación de Login
 
 ## Tabla de Contenidos
-1. [Introducción](#introducción)
-2. [Diagrama de Entidades](#diagrama-de-entidades)
-3. [Relaciones entre Entidades](#relaciones-entre-entidades)
-4. [Diagrama de Clases](#diagrama-de-clases)
-5. [Casos de Uso](#casos-de-uso)
+├───01_Introduction
+├───02_entities
+├───03_diagrams
+│   ├───Activities
+│   ├───Sequences
+│   └───UsesCases
+├───04_relationships
+└───examples
 
-## Introducción
-Esta documentación describe la estructura del proyecto de aplicación de login, incluyendo las entidades, relaciones, clases y casos de uso.
-
-
-
-## Diagrama de Clases
-
-mermaid 
-classDiagram 
-    class Usuario { 
-        +int id 
-        +String nombre 
-        +String apellido 
-        +String email 
-        +String contraseña 
-        +Date fecha_creacion 
-        +Date fecha_ultima_login 
-        +String metodo_autenticacion 
-        +registrar() 
-        +iniciarSesion() 
-        +recuperarContraseña() 
-    } 
- 
-    class AuthToken { 
-        +int id 
-        +String token 
-        +Date fecha_creacion 
-        +Date fecha_expiracion 
-        +generarToken() 
-    } 
- 
-    class PasswordResetCode { 
-        +int id 
-        +String codigo 
-        +Date fecha_creacion 
-        +validarCodigo() 
-    } 
- 
-    class AuthService { 
-        +int id 
-        +String nombre 
-        +autenticar() 
-    } 
- 
-    class ActivityLog { 
-        +int id 
-        +String accion 
-        +Date fecha 
-        +registrarActividad() 
-    } 
- 
-    class SecuritySettings { 
-        +int id 
-        +int intentos_fallidos 
-        +boolean bloqueado 
-        +bloquearUsuario() 
-    }
-
-## Casos de Uso
-Aquí puedes describir los casos de uso del sistema. Por ejemplo:
-
-### Caso de Uso 1: Registro de Usuario
-- **Actor**: Usuario
-- **Descripción**: Permite al usuario crear una nueva cuenta.
-- **Flujo Principal**:
-  1. El usuario accede a la página de registro.
-  2. El usuario completa el formulario de registro.
-  3. El sistema valida los datos ingresados.
-  4. El sistema crea una nueva cuenta y envía un correo de confirmación.
-
-### Caso de Uso 2: Inicio de Sesión
-- **Actor**: Usuario
-- **Descripción**: Permite al usuario iniciar sesión en su cuenta.
-- **Flujo Principal**:
-  1. El usuario accede a la página de inicio de sesión.
-  2. El usuario ingresa su correo y contraseña.
-  3. El sistema valida las credenciales.
-  4. El sistema genera un token JWT y redirige al usuario a la página principal.
-
-### Caso de Uso 3: Recuperación de Contraseña
-- **Actor**: Usuario
-- **Descripción**: Permite al usuario recuperar su contraseña.
-- **Flujo Principal**:
-  1. El usuario accede a la página de recuperación de contraseña.
-  2. El usuario ingresa su correo.
-  3. El sistema envía un código de recuperación al correo.
-  4. El usuario ingresa el código y establece una nueva contraseña.
-
-  ### Cómo Usar el Archivo de Documentación 
- 
-1. **Crear el archivo**: Crea un archivo llamado  DOCUMENTACION.md  en la raíz de tu proyecto. 
-2. **Agregar contenido**: Copia y pega la estructura anterior en el archivo y completa las secciones con la información relevante. 
-3. **Visualizar Diagramas**: Para visualizar los diagramas de Mermaid, necesitarás un editor que soporte Mermaid, como Visual Studio Code con la extensión "Markdown Preview Mermaid Support". 
- 
-### Notas Adicionales 
- 
-- Asegúrate de que el entorno donde visualices el Markdown soporte Mermaid para ver los diagramas correctamente. 
-- Puedes ajustar y personalizar los diagramas según tus necesidades a medida que el proyecto evoluciona. 
