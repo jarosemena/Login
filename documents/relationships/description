@@ -1,0 +1,5 @@
+## Relationships Between Entities
+- A `User` can have multiple `AuthTokens`.
+- A `User` can have multiple `PasswordResetCodes`.
+- A `User` can have multiple `ActivityLogs`.
+- An `AuthService` can be associated with a single `User`.

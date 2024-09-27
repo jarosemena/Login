@@ -10,67 +10,7 @@
 ## Introducción
 Esta documentación describe la estructura del proyecto de aplicación de login, incluyendo las entidades, relaciones, clases y casos de uso.
 
-## Diagrama de Entidades
-mermaid 
-classDiagram 
-    class Usuario { 
-        +int id 
-        +String nombre 
-        +String apellido 
-        +String email 
-        +String contraseña 
-        +Date fecha_creacion 
-        +Date fecha_ultima_login 
-        +String metodo_autenticacion 
-    } 
- 
-    class AuthToken { 
-        +int id 
-        +int usuario_id 
-        +String token 
-        +Date fecha_creacion 
-        +Date fecha_expiracion 
-    } 
- 
-    class PasswordResetCode { 
-        +int id 
-        +int usuario_id 
-        +String codigo 
-        +Date fecha_creacion 
-        +boolean utilizado 
-    } 
- 
-    class AuthService { 
-        +int id 
-        +String nombre 
-        +int usuario_id 
-    } 
- 
-    class ActivityLog { 
-        +int id 
-        +int usuario_id 
-        +String accion 
-        +Date fecha 
-    } 
- 
-    class SecuritySettings { 
-        +int id 
-        +int usuario_id 
-        +int intentos_fallidos 
-        +boolean bloqueado 
-        +Date fecha_bloqueo 
-    } 
- 
-    Usuario "1" -- "*" AuthToken : tiene > 
-    Usuario "1" -- "*" PasswordResetCode : tiene > 
-    Usuario "1" -- "*" ActivityLog : tiene > 
-    AuthService "*" -- "1" Usuario : asociado a >
 
-## Relaciones entre Entidades
-- Un `Usuario` puede tener múltiples `AuthToken`.
-- Un `Usuario` puede tener múltiples `PasswordResetCode`.
-- Un `Usuario` puede tener múltiples `ActivityLog`.
-- Un `AuthService` puede estar asociado a un único `Usuario`.
 
 ## Diagrama de Clases
 
