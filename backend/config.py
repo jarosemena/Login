@@ -1,0 +1,1 @@
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://logginapp:LogginApp123@localhost/userauthenticator'
