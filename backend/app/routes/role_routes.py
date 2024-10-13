@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllerscontrollers.role_controller import role_controller
+from app.controllers.role_controller import role_controller
 
 role_bp = Blueprint('role', __name__)
 role_bp.add_url_rule('/role', view_func=role_controller.get_roles, methods=['GET'])
