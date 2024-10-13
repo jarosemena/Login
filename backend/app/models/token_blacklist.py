@@ -17,3 +17,5 @@ class TokenBlacklist(Base):
 
     def __repr__(self):
         return f"<TokenBlacklist(token={self.token})>"
+    
+  
