@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.user_controller import user_controller
+from app.controllers.user_controller import user_controller
 
 user_bp = Blueprint('user', __name__)
 user_bp.add_url_rule('/users', view_func=user_controller.get_users, methods=['GET'])

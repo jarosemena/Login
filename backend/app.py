@@ -7,16 +7,17 @@ from app import create_app
 app = create_app()
 
 app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://usuario:contraseña@localhost/mi_proyecto'
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config.from_object(Config)
 
-# Importa y registra tus rutas aquí
 from app.routes.user_routes import user_bp
 from app.routes.auth_routes import auth_bp
+from app.routes.role_routes import role_bp
+from app.routes.rolesuser_routes import rolesuser_bp
 
 app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(auth_bp, url_prefix='/api')
+app.register_blueprint(role_bp, url_prefix='/api')
+app.register_blueprint(rolesuser_bp, url_prefix='/api')
 
 
 db = SQLAlchemy(app)
