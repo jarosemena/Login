@@ -2,8 +2,13 @@ from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models.user import User
 from extensions import db
+from flask import session
+from app.models.token_blacklist import TokenBlacklist
+import jwt
+import datetime
 
 auth_bp = Blueprint('auth', __name__)
+
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
@@ -33,6 +38,20 @@ def login():
         return jsonify({'message': 'Invalid username or password'}), 401
 
     # Here you would generate a token and return it
+    # Generate token
+    token = jwt.encode({
+        'user_id': user.id,
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+    }, 'your_secret_key', algorithm='HS256')
+
+    # Store the token in the database (assuming you have a Token model)
+    new_token = TokenBlacklist(user_id=user.id, token=token)
+    try:
+        db.session.add(new_token)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': 'Token generation failed', 'error': str(e)}), 500
     token = 'your_generated_token_here'
     return jsonify({'message': 'Login successful', 'token': token}), 200
 
@@ -53,3 +72,44 @@ def change_password():
     except Exception as e:
         db.session.rollback()
         return jsonify({'message': 'Password change failed', 'error': str(e)}), 500
+    
+@auth_bp.route('/logout', methods=['POST'])
+def logout():
+    # Here you would handle the logout logic, such as invalidating the token
+    session.pop('username', None)
+    # Assuming you have a token blacklist model to store invalidated tokens
+
+    # Get the token from the request headers
+    token = request.headers.get('Authorization').split()[1]
+
+    # Add the token to the blacklist
+    blacklisted_token = TokenBlacklist(token=token)
+    try:
+        db.session.add(blacklisted_token)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': 'Logout failed', 'error': str(e)}), 500
+    return jsonify({'message': 'Logout successful'}), 200
+
+@auth_bp.route('/set-session', methods=['POST'])
+def set_session():
+    data = request.get_json()
+    if not data or not data.get('username'):
+        return jsonify({'message': 'Invalid data'}), 400
+
+    session['username'] = data['username']
+    return jsonify({'message': 'Session set successfully'}), 200
+
+@auth_bp.route('/get-session', methods=['GET'])
+def get_session():
+    username = session.get('username')
+    if not username:
+        return jsonify({'message': 'No session found'}), 404
+
+    return jsonify({'message': 'Session found', 'username': username}), 200
+
+@auth_bp.route('/clear-session', methods=['POST'])
+def clear_session():
+    session.pop('username', None)
+    return jsonify({'message': 'Session cleared successfully'}), 200
