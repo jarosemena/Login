@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from models.rolesuser import RolesUser
+from app.models.rolesuser import RolesUser
 from extensions import db
 
 class rolesuser_controller:
