@@ -1,12 +1,15 @@
 # tests/test_role_controller.py
 import pytest
-from app import create_app, db
-from app.models import Role
+from app import create_app 
+from extensions import db
+from app.models.role import Role
+from app.tests.test_config import TestConfig
 
 @pytest.fixture
 def app():
-    app = create_app(config_class='test_config.TestConfig')
+    app = create_app(config_class=TestConfig)
     with app.app_context():
+        db.init_app(app)
         db.create_all()
         yield app
         db.session.remove()

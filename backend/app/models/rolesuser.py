@@ -8,8 +8,8 @@ class RolesUser(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
     
-    user = db.relationship('User', backref=db.backref('roles_user', lazy=True))
-    role = db.relationship('Role', backref=db.backref('roles_user', lazy=True))
+    user = db.relationship('users', backref=db.backref('roles_user', lazy=True))
+    role = db.relationship('roles', backref=db.backref('roles_user', lazy=True))
 
     def __init__(self, user_id, role_id):
         self.user_id = user_id

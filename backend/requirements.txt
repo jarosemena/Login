@@ -3,9 +3,10 @@ Flask-SQLAlchemy
 Flask-Migrate
 Flask-JWT-Extended
 Flask-Mail
-mysqlclient
+pymysql
 Flask-WTF
 Flask-Limiter
 bcrypt
+cryptography
 pytest
 pytest-flask
