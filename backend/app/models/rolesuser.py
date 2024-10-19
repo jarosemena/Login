@@ -8,6 +8,7 @@ class RolesUser(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
     
+    
     user = db.relationship('User', back_populates='roles')
     role = db.relationship('Role', back_populates='users')
 

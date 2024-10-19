@@ -9,6 +9,9 @@ class Role(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     description = db.Column(db.String(255))
 
+    
+    users = db.relationship('RolesUser', back_populates='role')
+
     def __init__(self, name, description=None):
         self.name = name
         self.description = description
