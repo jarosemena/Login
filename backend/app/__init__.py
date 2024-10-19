@@ -4,7 +4,7 @@ from config import Config
 def create_app( config_class=Config ):
     app = Flask(__name__)
     
-    # Configuración de la aplicación
+    # Configuración de la aplicaciónf
     app.config.from_object(Config)
 
     # Registro de blueprints

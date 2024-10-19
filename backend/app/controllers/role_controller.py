@@ -14,7 +14,7 @@ class role_controller:
 
     def create_role():
         data = request.get_json()
-        new_role = Role(name=data['name'])
+        new_role = Role(name=data.get('name'), description=data.get('description'))
         db.session.add(new_role)
         db.session.commit()
         return jsonify(new_role.to_dict()), 201

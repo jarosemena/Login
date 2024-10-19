@@ -20,7 +20,7 @@ def client(app):
     return app.test_client()
 
 def test_create_role(client):
-    response = client.post('/role', json={'name': 'Admin'})
+    response = client.post('/role', json={'name': 'Admin', 'description': 'Super User'})
     assert response.status_code == 201
     assert response.get_json()['name'] == 'Admin'
 
