@@ -5,7 +5,7 @@ from extensions import db
 
 class user_controller:
     def get_user_by_id(id):
-        user = User.query.get(id)
+        user = db.select(User).filter_by(id=id).first()  
         if not user:
             return jsonify({'message': 'User not found'}), 404
         
@@ -13,7 +13,7 @@ class user_controller:
         return jsonify({'user': user_data}), 200
 
     def get_users():
-        users = User.query.all()
+        users = db.select(User).all()
         result = []
         
         for user in users:
