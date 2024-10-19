@@ -1,5 +1,6 @@
 from flask import Flask
 from config import Config
+from extensions import db
 
 def create_app( config_class=Config ):
     app = Flask(__name__)
@@ -7,14 +8,16 @@ def create_app( config_class=Config ):
     # Configuración de la aplicaciónf
     app.config.from_object(config_class)
 
+    db.init_app(app)
+
     # Registro de blueprints
     from app.routes.user_routes import user_bp
-    from app.routes.auth_routes import auth_bp
+    #from app.routes.auth_routes import auth_bp
     from app.routes.role_routes import role_bp
     from app.routes.rolesuser_routes import rolesuser_bp
 
     app.register_blueprint(user_bp, url_prefix='/api')
-    app.register_blueprint(auth_bp, url_prefix='/api')
+    #app.register_blueprint(auth_bp, url_prefix='/api')
     app.register_blueprint(role_bp, url_prefix='/api')
     app.register_blueprint(rolesuser_bp, url_prefix='/api')
 
