@@ -5,7 +5,7 @@ def create_app( config_class=Config ):
     app = Flask(__name__)
     
     # Configuración de la aplicaciónf
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
     # Registro de blueprints
     from app.routes.user_routes import user_bp
