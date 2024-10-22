@@ -9,7 +9,6 @@ from app.tests.test_config import TestConfig
 def app():
     app = create_app(config_class=TestConfig)
     with app.app_context():
-        db.init_app(app)
         db.create_all()
         yield app
         db.session.remove()
